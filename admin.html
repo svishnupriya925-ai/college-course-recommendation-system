@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduGuide AI - Admin Records</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="admin-records">
+
+        <h2>🎓 EduGuide AI - Student Records</h2>
+        <button onclick="loadStudents()" class="refresh-btn">
+    🔄 Refresh Records
+</button>
+
+        <table border="1" width="100%" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Register No</th>
+                    <th>Percentage</th>
+                    <th>Group</th>
+                    <th>Interest</th>
+                    <th>Recommended Course</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTable">
+                <tr>
+                    <td colspan="7">Loading student records...</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+<script>
+function loadStudents() {
+
+    const table = document.getElementById("studentTable");
+
+    table.innerHTML = `
+        <tr>
+            <td colspan="8">Loading student records...</td>
+        </tr>
+    `;
+
+    fetch("http://localhost:5000/students")
+        .then(response => response.json())
+        .then(data => {
+
+            table.innerHTML = "";
+
+            data.students.forEach(student => {
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${student.id}</td>
+                    <td>${student.name || "N/A"}</td>
+                    <td>${student.register_number || "N/A"}</td>
+                    <td>${student.cutoff || "N/A"}</td>
+                    <td>${student.qualification || "N/A"}</td>
+                    <td>${student.interested_field || "N/A"}</td>
+                    <td>${student.recommended_course || "N/A"}</td>
+                    <td>
+                        <button class="delete-btn" onclick="deleteStudent(${student.id})">
+                            🗑️ Delete
+                        </button>
+                    </td>
+                `;
+
+                table.appendChild(row);
+            });
+
+        })
+        .catch(error => {
+
+            console.error("ERROR:", error);
+
+            table.innerHTML = `
+                <tr>
+                    <td colspan="8">
+                        ❌ Unable to load student records
+                    </td>
+                </tr>
+            `;
+        });
+}
+
+
+function deleteStudent(id) {
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this student record?"
+    );
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    fetch(`http://localhost:5000/students/${id}`, {
+        method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        if (data.success) {
+            alert("Student record deleted successfully!");
+            loadStudents();
+        } else {
+            alert("Delete failed: " + data.message);
+        }
+
+    })
+    .catch(error => {
+
+        console.error("Delete error:", error);
+
+        alert("Unable to delete student record");
+    });
+}
+
+
+loadStudents();
+</script>
+    
+
+</body>
+</html>

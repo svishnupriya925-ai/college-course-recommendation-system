@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Course</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<i class="fas fa-graduation-cap"></i>
+<h2>College Course Recommendation System</h2>
+</div>
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="search.html">Search Course</a></li>
+<li><a href="recommendation.html">Recommended Courses</a></li>
+<li><a href="colleges.html">Colleges</a></li>
+<li><a href="career.html">Career Guide</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+
+</header>
+
+<section class="about">
+<h2>🎓 Student Details</h2>
+<p>Please fill your information to get the best course recommendation.</p>
+</section>
+
+<center>
+
+<form onsubmit="recommendCourse(); return false;">
+
+<table cellpadding="15">
+
+<tr>
+<td>Student Name</td>
+<td>
+<input type="text" id="name" required>
+</td>
+</tr>
+
+<tr>
+<td>Register Number</td>
+<td>
+<input type="text" id="rollno" required>
+</td>
+</tr>
+
+<tr>
+<td>Qualification</td>
+<td>
+<select id="qualification" required>
+<option value="">Select Qualification</option>
+<option value="12th Science">12th Science</option>
+<option value="12th Commerce">12th Commerce</option>
+<option value="12th Arts">12th Arts</option>
+<option value="Diploma">Diploma</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Cut-Off Marks</td>
+<td>
+<input type="number" id="cutoff" min="0" max="200" required>
+</td>
+</tr>
+
+<tr>
+<td>Interested Field</td>
+<td>
+<select id="field" required>
+<option value="">Select Field</option>
+<option value="Computer">Computer</option>
+<option value="Artificial Intelligence">Artificial Intelligence</option>
+<option value="Data Science">Data Science</option>
+<option value="Biology">Biology</option>
+<option value="Engineering">Engineering</option>
+<option value="Business">Business</option>
+<option value="Commerce">Commerce</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Preferred Location</td>
+<td>
+<input type="text" id="location" placeholder="Enter City">
+</td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<button type="submit" class="btn">
+🔍 Search Course
+</button>
+</td>
+</tr>
+
+</table>
+
+</form>
+
+</center>
+
+<footer>
+<p>© 2026 College Course Recommendation System</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

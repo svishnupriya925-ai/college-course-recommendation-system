@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Details</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<i class="fas fa-graduation-cap"></i>
+<h2>College Course Recommendation System</h2>
+</div>
+</header>
+
+<section class="about">
+<h2>🏫 College Details</h2>
+
+<div class="card" id="collegeDetails"></div>
+
+<br>
+
+<a href="colleges.html" class="btn">⬅ Back</a>
+
+</section>
+
+<script>
+
+const collegeData = {
+
+"PSG College of Arts & Science":{
+rating:"4.9 / 5",
+location:"Coimbatore",
+contact:"+91 422 4303300",
+website:"https://www.psgcas.ac.in"
+},
+
+"PSG College of Technology":{
+rating:"4.9 /5",
+location:"Coimbatore",
+contact:"+91 422 2572177",
+website:"https://www.psgtech.edu"
+},
+
+"Sri Krishna College of Engineering and Technology":{
+ rating:"4.8 / 5",
+ location:"Coimbatore",
+ contact:"+91 422 2678000",
+ website:"https://www.skcet.ac.in"
+},
+
+"Sri Krishna Arts & Science College":{
+rating:"4.8 / 5",
+location:"Coimbatore",
+contact:"+91 422 2678001",
+website:"https://www.skasc.ac.in"
+},
+
+"Kumaraguru College of Technology":{
+rating:"4.8 / 5",
+location:"Coimbatore",
+contact:"+91 422 2661100",
+website:"https://www.kct.ac.in"
+},
+
+"PSG Institute of Medical Sciences & Research":{
+rating:"4.9 / 5",
+location:"Coimbatore",
+contact:"+91 422 4345353",
+website:"https://www.psgimsr.ac.in"
+},
+
+"Coimbatore Medical College":{
+rating:"4.8 / 5",
+location:"Coimbatore",
+contact:"+91 422 2301393",
+website:"https://cmccbe.org"
+},
+
+"Karpagam College of Pharmacy":{
+rating:"4.6 / 5",
+location:"Coimbatore",
+contact:"+91 422 2619005",
+website:"https://kahedu.edu.in"
+}
+
+};
+
+let college = localStorage.getItem("selectedCollege");
+
+let details = collegeData[college];
+
+if(details){
+
+document.getElementById("collegeDetails").innerHTML = `
+<h3>${college}</h3>
+<p>⭐ Rating : ${details.rating}</p>
+<p>📍 Location : ${details.location}</p>
+<p>📞 Contact : ${details.contact}</p>
+
+<a href="${details.website}" target="_blank" class="btn">
+🌐 Official Website
+</a>
+`;
+
+}else{
+
+document.getElementById("collegeDetails").innerHTML =
+"<h3>College details not available.</h3>";
+
+}
+
+</script>
+
+</body>
+</html>

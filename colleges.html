@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Recommended Colleges</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+<i class="fas fa-graduation-cap"></i>
+<h2>College Course Recommendation System</h2>
+</div>
+
+
+<nav>
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="search.html">Search Course</a></li>
+
+<li><a href="recommendation.html">Recommended Courses</a></li>
+
+<li><a href="colleges.html">Colleges</a></li>
+
+<li><a href="career.html">Career Guide</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+</nav>
+
+</header>
+
+
+
+
+<section class="about">
+
+<h2>🏫 Recommended Colleges</h2>
+
+<p>
+Find the best colleges based on your recommended course.
+</p>
+
+</section>
+
+
+
+
+<section class="features" id="collegeContainer">
+
+</section>
+
+
+
+
+<br><br>
+
+
+<center>
+
+<a href="recommendation.html" class="btn">
+⬅ Back
+</a>
+
+<a href="index.html" class="btn">
+🏠 Home
+</a>
+
+<a href="career.html" class="btn">
+➡ Next
+</a>
+
+</center>
+
+
+
+<br><br>
+
+
+<footer>
+
+<p>
+© 2026 College Course Recommendation System
+</p>
+
+</footer>
+
+
+
+
+<script src="script.js"></script>
+
+
+
+<script>
+
+
+function loadColleges(){
+
+
+let course = localStorage.getItem("selectedCourse");
+
+
+let collegeData = {
+
+
+"Medical":[
+
+["PSG Institute of Medical Sciences & Research","Coimbatore","4.9"],
+
+["Coimbatore Medical College","Coimbatore","4.8"],
+
+["Karpagam Faculty of Medical Sciences","Coimbatore","4.7"]
+
+],
+
+
+
+"MBBS":[
+
+["PSG Institute of Medical Sciences & Research","Coimbatore","4.9"],
+
+["Government Medical College","Tamil Nadu","4.8"]
+
+],
+
+
+"B.Pharm":[
+
+["PSG College of Pharmacy","Coimbatore","4.8"],
+
+["KMCH College of Pharmacy","Coimbatore","4.7"],
+
+["Karpagam College of Pharmacy","Coimbatore","4.6"],
+
+["PPG College of Pharmacy","Coimbatore","4.5"],
+
+["SNS College of Pharmacy and Health Sciences","Coimbatore","4.7"],
+
+["Cheran College of Pharmacy","Coimbatore","4.4"]
+
+],
+
+
+"Data Science":[
+
+["Sri Krishna College of arts and science ","Coimbatore","4.8"],
+
+["PSG College of Arts & Science","Coimbatore","4.9"],
+
+["KPR College of Arts & Science","Coimbatore","4.7"]
+
+],
+
+
+
+"Computer Science":[
+
+["PSG College of Technology","Coimbatore","4.9"],
+
+["Sri Krishna arts and science College ","Coimbatore","4.8"],
+
+["Kumaraguru College of Technology","Coimbatore","4.8"]
+
+],
+
+"B.Tech Lateral Entry":[
+
+    ["PSG College of Technology","Coimbatore","4.9"],
+
+    ["Kumaraguru College of Technology","Coimbatore","4.8"],
+
+    ["Sri Krishna College of Engineering and Technology","Coimbatore","4.7"]
+
+],
+
+"B.Tech Computer Science Engineering":[
+
+    ["PSG College of Technology","Coimbatore","4.9"],
+
+    ["Kumaraguru College of Technology","Coimbatore","4.8"],
+
+    ["Sri Krishna College of Engineering and Technology","Coimbatore","4.7"]
+
+],
+
+
+"Engineering":[
+
+["PSG College of Technology","Coimbatore","4.9"],
+
+["Kumaraguru College of Technology","Coimbatore","4.8"],
+
+["Sri Krishna College of Engineering and Technology","Coimbatore","4.7"]
+
+],
+
+
+
+"Commerce":[
+
+["PSG College of Arts & Science","Coimbatore","4.9"],
+
+["Sri Krishna Arts & Science College","Coimbatore","4.8"]
+
+],
+
+"B.Com":[
+
+    ["PSG College of Arts & Science","Coimbatore","4.9"],
+
+    ["Sri Krishna Arts & Science College","Coimbatore","4.8"]
+
+],
+
+"BBA":[
+
+    ["PSG College of Arts & Science","Coimbatore","4.9"],
+
+    ["Sri Krishna Arts & Science College","Coimbatore","4.8"]
+
+],
+
+
+"Arts":[
+
+["Government Arts College","Coimbatore","4.6"],
+
+["Sri Krishna Arts & Science College","Coimbatore","4.8"]
+
+]
+
+
+};
+
+
+
+let container=document.getElementById("collegeContainer");
+
+
+container.innerHTML="";
+
+
+
+let colleges = collegeData[course] || collegeData["Computer Science"];
+
+
+
+colleges.forEach(function(college){
+
+
+container.innerHTML += `
+
+
+<div class="card">
+
+
+<img src="images/college1.jpg" width="250">
+
+
+<h3>${college[0]}</h3>
+
+
+<p>📍 ${college[1]}</p>
+
+
+<p>⭐ Rating : ${college[2]} / 5</p>
+
+
+<p>🎓 Suitable Course : ${course}</p>
+
+<button class="btn" onclick="viewDetails('${college[0]}')">
+    View Details
+</button>
+
+
+</div>
+
+
+`;
+
+
+});
+
+
+}
+
+
+
+window.onload = loadColleges;
+function viewDetails(collegeName){
+
+    localStorage.setItem("selectedCollege", collegeName);
+
+    window.location.href = "college-details.html";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

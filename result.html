@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EduGuide AI - Result</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="result-card">
+
+    <h2>🎓 EduGuide AI Recommendation</h2>
+
+    <h3 id="studentName"></h3>
+
+    <p><b>Eligibility Status:</b> <span id="status">Eligible ✅</span></p>
+
+    <p><b>Recommended Course:</b> <span id="courseResult"></span></p>
+    <p><b>Roll No:</b> <span id="rollResult"></span></p>
+
+<p><b>Qualification:</b> <span id="qualificationResult"></span></p>
+
+<p><b>Cut Off:</b> <span id="cutoffResult"></span></p>
+
+<p><b>Location:</b> <span id="locationResult"></span></p>
+
+<p><b>Match Percentage:</b> <span id="matchResult">90%</span></p>
+
+    <p><b>Match Percentage:</b> <span id="match">90%</span></p>
+
+    <p><b>Career Opportunities:</b></p>
+    <p id="career"></p>
+
+    <button onclick="window.print()">🖨 Print</button>
+
+    <button onclick="location.href='student.html'">
+        🔄 Recommend Again
+    </button>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+document.getElementById("studentName").innerHTML =
+"Welcome " + localStorage.getItem("studentName");
+
+document.getElementById("courseResult").innerHTML =
+localStorage.getItem("recommendedCourse");
+
+document.getElementById("career").innerHTML =
+localStorage.getItem("career");
+
+document.getElementById("rollResult").innerHTML =
+localStorage.getItem("rollno");
+
+document.getElementById("qualificationResult").innerHTML =
+localStorage.getItem("qualification");
+
+document.getElementById("cutoffResult").innerHTML =
+localStorage.getItem("cutoff");
+
+document.getElementById("locationResult").innerHTML =
+localStorage.getItem("location");
+</script>
